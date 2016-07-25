@@ -31,4 +31,4 @@ JS Pagination and Search Project
 - [x] If no matches are found, include a message in the HTML to tell the user there are no matches.
 
 # View Project
-[Live Demo](re-brand.us/projects/pagination-filter/index.html) of this project for peer review.
+[Live Demo](http://re-brand.us/projects/pagination-filter/index.html) of this project for peer review.
