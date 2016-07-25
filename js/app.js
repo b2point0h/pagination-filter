@@ -4,39 +4,40 @@
 
 // Globals
 var studentItems = $('.student-item');
+var studentSearch ='<div class="student-search"><input id="search" placeholder="Search for students..."><button>Search</button></div>';
+var pagination ='<div class="pagination"><ul></ul></div>';
+var studentList = pages(studentItems);
+
+// Appends
+$('.page-header.cf').append(studentSearch);
+$('.page').append(pagination);
 
 
-// Add varibles that represent the HTML parts and append to page
-var studentSearch ='<div class="student-search"><input placeholder="Search for students..."><button>Search</button></div>';
-
-
-// Pagination section should display 10 students per page. First need to get total number of students, divide by 10 to determine how many pages are necessary. Display as numbered list at bottom of page. Clicking each page number will display that section of students
-
+// Generate an array of students for each page. Limit each page to a max of 10 students.
 function pages(list) {
-  var pagesArray = [];
-  do {
-    for (; list.length > 0;) {
-      pagesArray.push(list.splice(0, 10));
-    }
-  } while (list.length > 0);
-  return pagesArray;
+	var oldList = list.slice();
+	var pagesArray = [];
+	while (oldList.length) {
+		pagesArray.push(oldList.splice(0,10));
+	}
+	return pagesArray;
 }
 
+// After generating the pages array of students, display the first page, hide the rest. 
 function showPages(pageNumber, pageList) {
   $(".student-list li").hide();
   $.each(pageList, function(index, page){
       if (pageNumber === index) {
         $.each(page, function(i, listItem){
-          $(listItem).fadeIn('slow');
+          $(listItem).fadeIn('fast');
         });
       }
   });
 }
 
+// Append buttons to page. The number of pages to show is found from the pageList.length. Add & remove active class on click, and on pageload add active class to first button.
 function appendButtons(pageList) {
 	var numPages = pageList.length;
-	var pagination ='<div class="pagination"><ul></ul></div>';
-	$('.page').append(pagination);
 	for (var i = 1; i <= numPages; i++) {
 		var buttons = '<li><a href="#">' + i + '</a></li>';
 		$('.pagination ul').append(buttons);
@@ -53,14 +54,35 @@ function appendButtons(pageList) {
 	  });
 }
 
+	
+// Search function finds both name and/or email. If no results are found, change the header H2 to display No Results, otherwise display default Students title. On firing of the searchList, check input value to see if matches, if there are matches, generate the new student array & display appropriate list of buttons.
+function searchList() {	
+    var searchTerm = $('#search').val().toLowerCase().trim();
 
+        var filteredStudents = studentItems.filter(function(i) {
+        	var studentEmail = $(this).find('.email').text();
+            var studentNames = $(this).find('h3').text();
+            if (studentNames.indexOf(searchTerm) > -1 || studentEmail.indexOf(searchTerm) > -1) {
+                return true;
+            }
+            return false;
+        });
+        if (filteredStudents.length === 0 ) {
+        	$('.page-header h2').text('No Results');
+        } else {
+        	$('.page-header h2').text('STUDENTS');
+        }
+        var paginated_students = pages(filteredStudents);
+        console.log(filteredStudents);
+        $('.pagination').remove();
+        appendButtons(paginated_students);
+        showPages(0, paginated_students);
+}
 
-
-// Append search functionality & pagination to the list
-$('.page-header.cf').append(studentSearch);
-
-
-var studentList = pages(studentItems);
-console.log(studentList);
+// Inits
 appendButtons(studentList);
 showPages(0, studentList);
+
+// Event Handlers
+$('.student-search').find('button').on('click', searchList);
+$('.student-search').find('input').keyup(searchList);
