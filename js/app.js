@@ -10,7 +10,7 @@ var studentList = pages(studentItems);
 
 // Appends
 $('.page-header.cf').append(studentSearch);
-$('.page').append(pagination);
+
 
 
 // Generate an array of students for each page. Limit each page to a max of 10 students.
@@ -37,6 +37,7 @@ function showPages(pageNumber, pageList) {
 
 // Append buttons to page. The number of pages to show is found from the pageList.length. Add & remove active class on click, and on pageload add active class to first button.
 function appendButtons(pageList) {
+	$('.page').append(pagination);
 	var numPages = pageList.length;
 	for (var i = 1; i <= numPages; i++) {
 		var buttons = '<li><a href="#">' + i + '</a></li>';
