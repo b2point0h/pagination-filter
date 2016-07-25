@@ -13,13 +13,13 @@ JS Pagination and Search Project
 
 - [x] Using progressive enhancement, add the student search markup as presented in the filters-example.html file to the index.html file.
 
-- [] Add an event listener to the search button. When the user clicks on the button it should use the text in the search input to filter the results. Searching should be case insensitive. e.g. a search for “Susan” should return results for “susan” and “Susan".
+- [X] Add an event listener to the search button. When the user clicks on the button it should use the text in the search input to filter the results. Searching should be case insensitive. e.g. a search for “Susan” should return results for “susan” and “Susan".
 
-- [] Users should be able to search by name or e-mail address. And partial matches, like just a first name, should be displayed in the results.
+- [X] Users should be able to search by name or e-mail address. And partial matches, like just a first name, should be displayed in the results.
 
-- [ ] Search results should also be paginated. For example, if the search returns more than 10 results, those results should be paginated too.
+- [X] Search results should also be paginated. For example, if the search returns more than 10 results, those results should be paginated too.
 
-- [ ] Before you submit your project for review, make sure you can check off all of the items on the Student Project Submission Checklist. The checklist is designed to help you make sure you’ve met the grading requirements and that your project is complete and ready to be submitted!
+- [X] Before you submit your project for review, make sure you can check off all of the items on the Student Project Submission Checklist. The checklist is designed to help you make sure you’ve met the grading requirements and that your project is complete and ready to be submitted!
 
 
 ## Extra Credit
