@@ -1,7 +1,5 @@
 JS Pagination and Search Project
 ================================
-## Completed Demos
-- [54 students](re-brand.us/projects/pagination-filter/index.html)
 
 ## Requirements
 
@@ -31,3 +29,6 @@ JS Pagination and Search Project
 - [x] As the user types in the search box, dynamically filter the student listings. In other words, after each letter is typed into the search box, display any listings that match .
 
 - [x] If no matches are found, include a message in the HTML to tell the user there are no matches.
+
+# View Project
+[Live Demo](re-brand.us/projects/pagination-filter/index.html) of this project for peer review.
