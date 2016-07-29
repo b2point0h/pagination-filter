@@ -1,3 +1,4 @@
+"use strict";
 // Use progressive enhancement to add functionality to a list of students
 // Use append methods to add functionality to the page so as to not degrade or eliminate the readability of browsers that do not have javascript enabled
 
@@ -74,9 +75,10 @@ function searchList() {
         	$('.page-header h2').text('STUDENTS');
         }
         var paginated_students = pages(filteredStudents);
-        console.log(filteredStudents);
         $('.pagination').remove();
-        appendButtons(paginated_students);
+        if (filteredStudents.length >= 10) {
+          appendButtons(paginated_students);
+        }
         showPages(0, paginated_students);
 }
 
